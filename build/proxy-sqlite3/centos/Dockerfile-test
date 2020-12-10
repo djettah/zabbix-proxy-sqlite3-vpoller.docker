@@ -1,0 +1,5 @@
+FROM golang AS build-stage
+RUN go get -u github.com/LK4D4/vndr
+
+FROM scratch AS export-stage
+COPY --from=build-stage /go/bin/vndr /
